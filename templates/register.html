@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Register New Voter</h2>
+<form method="post">
+    Full Name: <input type="text" name="full_name"><br>
+    Age: <input type="number" name="age"><br>
+    Gender: <input type="text" name="gender"><br>
+    State: <input type="text" name="state"><br>
+    LGA: <input type="text" name="lga"><br>
+    <input type="submit" value="Register">
+</form>
+{% endblock %}

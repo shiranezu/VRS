@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Search Voter by ID</h2>
+<form method="post">
+    Voter ID: <input type="text" name="voter_id">
+    <input type="submit" value="Search">
+</form>
+{% if result %}
+    <h3>Result:</h3>
+    <ul>
+        <li>ID: {{ result[0] }}</li>
+        <li>Name: {{ result[1] }}</li>
+        <li>Age: {{ result[2] }}</li>
+        <li>Gender: {{ result[3] }}</li>
+        <li>State: {{ result[4] }}</li>
+        <li>LGA: {{ result[5] }}</li>
+        <li>Registered At: {{ result[6] }}</li>
+    </ul>
+{% elif result == None and request.method == 'POST' %}
+    <p>No voter found.</p>
+{% endif %}
+{% endblock %}
