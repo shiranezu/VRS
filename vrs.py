@@ -28,7 +28,6 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Connect to DB Helper
 def get_connection():
     return mysql.connector.connect(
         host=os.getenv("DB_HOST"),
@@ -37,7 +36,6 @@ def get_connection():
         database=os.getenv("DB_NAME")
     )
 
-# Register a New Voter
 def register_voter():
     full_name = input("Enter full name: ")
     age = int(input("Enter age: "))
@@ -67,7 +65,6 @@ def view_all_voters():
         print(v)
     conn.close()
 
-# Search Voter by ID 
 def search_voter():
     voter_id = input("Enter Voter ID to search: ")
     conn = get_connection()
@@ -80,7 +77,6 @@ def search_voter():
         print("❌ Voter not found.")
     conn.close()
 
-# Update Voter 
 def update_voter():
     voter_id = input("Enter Voter ID to update: ")
     conn = get_connection()
@@ -101,7 +97,6 @@ def update_voter():
         print("❌ Voter not found.")
     conn.close()
 
-# Delete Voter 
 def delete_voter():
     voter_id = input("Enter Voter ID to delete: ")
     confirm = input("Are you sure? (yes/no): ")
@@ -115,7 +110,6 @@ def delete_voter():
     else:
         print("Cancelled.")
 
-# Main Menu 
 def main():
     init_db()
     while True:
