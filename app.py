@@ -77,6 +77,18 @@ def search():
 
     return render_template('search.html', result=result)
 
+# delete voter
+@app.route('/delete/<voter_id>', methods=['POST'])
+def delete_voter(voter_id):
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("DELETE FROM voters WHERE voter_id = %s", (voter_id,))
+    conn.commit()
+    conn.close()
+    flash(f"Voter with ID {voter_id} has been deleted.", "success")
+    return redirect(url_for('voters'))
+
+
 # Exit Application
 @app.route('/exit')
 def exit():

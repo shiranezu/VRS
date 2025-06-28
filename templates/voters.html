@@ -48,16 +48,22 @@
             <th>State</th>
             <th>LGA</th>
             <th>Registered At</th>
+            <th>Actions</th>
         </tr>
         {% for v in voters %}
         <tr>
             <td>{{ v[0] }}</td>
             <td>{{ v[1] }}</td>
             <td>{{ v[2] }}</td>
-            <td>{{ v[3] }}</td>
+            <td>{{ v[3] }} </td>
             <td>{{ v[4] }}</td>
-            <td>{{ v[5] }}</td>
-            <td>{{ v[6] }}</td>
+            <td> {{ v[5] }} </td>
+            <td>{{ v[6] }} </td>
+            <td>
+                <form action="{{ url_for('delete_voter', voter_id=v[0]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this voter?');">
+                    <button type="submit" style="color:red;">Delete</button>
+                </form>
+            </td>
         </tr>
         {% endfor %}
 </table>
