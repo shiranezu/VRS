@@ -77,5 +77,10 @@ def search():
 
     return render_template('search.html', result=result)
 
+# Exit Application
+@app.route('/exit')
+def exit():
+    return render_template('exit.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
