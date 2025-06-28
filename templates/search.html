@@ -1,22 +1,67 @@
-{% extends 'base.html' %}
-{% block content %}
-<h2>Search Voter by ID</h2>
-<form method="post">
-    Voter ID: <input type="text" name="voter_id">
-    <input type="submit" value="Search">
-</form>
-{% if result %}
-    <h3>Result:</h3>
-    <ul>
-        <li>ID: {{ result[0] }}</li>
-        <li>Name: {{ result[1] }}</li>
-        <li>Age: {{ result[2] }}</li>
-        <li>Gender: {{ result[3] }}</li>
-        <li>State: {{ result[4] }}</li>
-        <li>LGA: {{ result[5] }}</li>
-        <li>Registered At: {{ result[6] }}</li>
-    </ul>
-{% elif result == None and request.method == 'POST' %}
-    <p>No voter found.</p>
-{% endif %}
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <style>
+        #search{
+            margin-left: 22em;
+            margin-top: 5em;
+            font-size: 1.2em;
+        }
+        #txt-box{
+            width: 20em;
+            border: 1px solid #262424;
+            background: whitesmoke;
+            height: 2.5em;
+            color: #262424;
+        }
+        #b-btn{
+            height: 2.6em;
+            background-color: #008d00;
+            color: whitesmoke;
+            border: none;
+            margin-right: 20px;
+        }
+        #b-btn:hover{
+            background-color: whitesmoke;
+            color: #008d00;
+            border-color: #008d00;
+            border: 1px solid;
+        }
+        h2, h3{
+            font-size: 1.8em;
+        }
+        ul, p{
+            /* margin-left: 25em; */
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+    <h2>Search Voter by ID</h2>
+    <form id="search" method="post">
+        Voter ID: <input type="text" name="voter_id" id="txt-box">
+        <input type="submit" value="Search" id="b-btn">
+    </form>
+    {% if result %}
+        <h3>Result:</h3>
+        <ul>
+            <li>ID: {{ result[0] }}</li>
+            <li>Name: {{ result[1] }}</li>
+            <li>Age: {{ result[2] }}</li>
+            <li>Gender: {{ result[3] }}</li>
+            <li>State: {{ result[4] }}</li>
+            <li>LGA: {{ result[5] }}</li>
+            <li>Registered At: {{ result[6] }}</li>
+        </ul>
+    {% elif result == None and request.method == 'POST' %}
+        <p>No voter found.</p>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

@@ -1,20 +1,67 @@
-{% extends 'base.html' %}
-{% block content %}
-<h2>All Voters</h2>
-<table border="1">
-    <tr>
-        <th>ID</th><th>Name</th><th>Age</th><th>Gender</th><th>State</th><th>LGA</th><th>Registered At</th>
-    </tr>
-    {% for v in voters %}
-    <tr>
-        <td>{{ v[0] }}</td>
-        <td>{{ v[1] }}</td>
-        <td>{{ v[2] }}</td>
-        <td>{{ v[3] }}</td>
-        <td>{{ v[4] }}</td>
-        <td>{{ v[5] }}</td>
-        <td>{{ v[6] }}</td>
-    </tr>
-    {% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Voters</title>
+    <style>
+        table{
+            border: 1.5px solid #262424; 
+            margin: auto;
+            border-collapse:collapse;
+        }
+        th{ 
+            border: 1px solid #262424;
+            padding: 10px;
+            color: whitesmoke;
+            background-color: #262424;
+        }
+        th, td {
+            border-bottom: 1.5px solid #262424;
+            padding: 15px;
+            text-align: left;
+        }
+
+        h2{
+            font-size: 1.8em;
+            margin-bottom: 100px;
+            margin-top: 50px;
+        }
+        tr:nth-child(odd){
+            background-color: #2624242f;
+        }
+        tr:hover{
+            background-color: #2624242f;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+    <h2>All Voters</h2>
+    <table border="0">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>State</th>
+            <th>LGA</th>
+            <th>Registered At</th>
+        </tr>
+        {% for v in voters %}
+        <tr>
+            <td>{{ v[0] }}</td>
+            <td>{{ v[1] }}</td>
+            <td>{{ v[2] }}</td>
+            <td>{{ v[3] }}</td>
+            <td>{{ v[4] }}</td>
+            <td>{{ v[5] }}</td>
+            <td>{{ v[6] }}</td>
+        </tr>
+        {% endfor %}
 </table>
 {% endblock %}
+
+</body>
+</html>
