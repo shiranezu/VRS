@@ -3,14 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Voter Registration System</title>
+    <style>
+      body{
+        background-color: whitesmoke;
+        color: #262424;
+        font-family: sans-serif;
+      }
+      nav{
+        text-align: center;
+        padding: 14px 16px;
+      }
+      a{
+        text-decoration: none;
+        color: #262424;
+        padding:  26px;
+        font-size: 20px;
+      }
+      a:hover{
+        text-decoration: underline;
+        color: black;
+      }
+      h1{
+        text-align: center;
+        font-size: 40px;
+      }
+      hr{
+        border-color: #EEE5DA;
+      }
+    </style>
 </head>
 <body>
-    <h1>Voter Registration System</h1>
     <nav>
         <a href="{{ url_for('register') }}">Register</a> |
         <a href="{{ url_for('voters') }}">View Voters</a> |
         <a href="{{ url_for('search') }}">Search</a>
     </nav>
+    <h1>Voter Registration System</h1>
     <hr>
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}

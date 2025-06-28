@@ -1,12 +1,98 @@
-{% extends 'base.html' %}
-{% block content %}
-<h2>Register New Voter</h2>
-<form method="post">
-    Full Name: <input type="text" name="full_name"><br>
-    Age: <input type="number" name="age"><br>
-    Gender: <input type="text" name="gender"><br>
-    State: <input type="text" name="state"><br>
-    LGA: <input type="text" name="lga"><br>
-    <input type="submit" value="Register">
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Voter</title>
+    <style>
+        body{
+            background-color: #c2b280;
+            color: #6F4E37;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        nav{
+            text-align: center;
+            padding: 14px 16px;
+        }
+        a{
+            text-decoration: none;
+            color: #6F4E37;
+            padding:  26px;
+            font-size: 20px;
+            
+        }
+        form{
+            padding-left: 45px;
+            padding-right: 45px;
+            padding-top: 75px;
+            padding-bottom: 75px;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+            background-color:whitesmoke;
+            max-width: 400px;
+            margin: 0 auto 100px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid;
+            margin-top: 40px;
+            border-color:#262424;
+            border-radius: 2%;
+        }
+        p{
+            text-align: left;
+            margin-bottom: 5px;
+        }
+        h2{
+            text-align: left;
+            margin-bottom: 20px;
+            margin-top: 0;
+            padding-bottom: 10px;
+            font-size: 30px;
+        }
+        #box{
+            width: 93%;
+            border: 1px solid #262424;
+            background: whitesmoke;
+            height: 2.5em;
+            color: #262424;
+            border-radius: 10%;
+        }
+        #btn{
+            background-color: #008d00;
+            color: whitesmoke;
+            width: 120px;
+            height: 40px;
+            border: none;
+            border-radius: 8%;
+            margin-left: 15em;
+            margin-top: 1em;
+            font-size: 17px;
+        }
+        #btn:hover{
+            background-color: whitesmoke;
+            color: #008d00;
+            border-color: #008d00;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+    
+    <form method="post">
+    <h2>Register Voter</h2>
+        <p>Full Name</p> <input id="box" type="text" name="full_name" placeholder="Enter full name"><br>
+        <p>Age</p> <input id="box" type="number" name="age" placeholder="Enter age"><br>
+        <!-- <p>Gender</p> <input id="box" type="text" name="gender" placeholder="Select Gender"><br> -->
+        <p>Gender</p><select name="Gender" id="box">
+            <option value="--">Enter gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+        <p>State</p> <input id="box" type="text" name="state" placeholder="Enter state"><br>
+        <p>LGA</p> <input id="box" type="text" name="lga" placeholder="Enter lga"><br>
+        <input type="submit" value="Register" id="btn">
+    </form>
+    {% endblock %}
+</body>
+</html>
