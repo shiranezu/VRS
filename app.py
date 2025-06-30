@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, Response
+import csv
 import mysql.connector
 from dotenv import load_dotenv
 import uuid
@@ -93,6 +94,27 @@ def delete_voter(voter_id):
 @app.route('/exit')
 def exit():
     return render_template('exit.html')
+
+# Download voters as CSV
+@app.route('/download')
+def download():
+    conn = get_connection()
+    c = conn.cursor()
+    c.execute("SELECT * FROM voters")
+    voters = c.fetchall()
+    conn.close()
+
+    def generate():
+        data = csv.writer()
+        output = []
+        output.append(['ID', 'Name', 'Age', 'Gender', 'State', 'LGA', 'Registered At'])
+        output.extend(voters)
+        for row in output:
+            yield ','.join(str(x) for x in row) + '\n'
+
+    return Response(generate(), mimetype='text/csv',
+                    headers={"Content-Disposition": "attachment;filename=voters.csv"})
+
 
 if __name__ == '__main__':
     app.run(debug=True)

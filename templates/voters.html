@@ -33,6 +33,18 @@
         tr:hover{
             background-color: #2624242f;
         }
+
+        button {
+            padding: 10px 15px;
+            background-color: #262424;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #prt{
+            margin-top: 2em;
+        }
     </style>
 </head>
 <body>
@@ -67,7 +79,15 @@
         </tr>
         {% endfor %}
 </table>
+<div style="margin-bottom: 15px;">
+    <button id="prt" onclick="window.print()">🖨️ Print</button>
+    <a href="{{ url_for('download') }}">
+        <button id="prt">⬇️ Download CSV</button>
+    </a>
+</div>
+
 {% endblock %}
+
 
 </body>
 </html>
